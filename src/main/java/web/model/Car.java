@@ -14,16 +14,6 @@ public class Car {
         this.year = year;
     }
 
-    public static List<Car> createCarList() {
-        List<Car> carList = new ArrayList<>();
-        carList.add(new Car("BMW", "M5", 2018));
-        carList.add(new Car("AUDI", "A5", 2008));
-        carList.add(new Car("Mercedes", "220", 2002));
-        carList.add(new Car("Bentley", "Continental", 2022));
-        carList.add(new Car("Skoda", "Octavia", 2024));
-        return carList;
-    }
-
     public String getModel() {
         return model;
     }
