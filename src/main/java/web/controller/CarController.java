@@ -11,16 +11,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Car;
 import web.service.CarService;
 import web.service.CarServiceImpl;
+import web.dao.CarDao;
+import web.dao.CarDaoImpl;
 import java.util.List;
 
 @Controller
 public class CarController {
-    
-    private CarService carService = new CarServiceImpl();
 
+    @Autowired
+    private final CarService carService = new CarServiceImpl();
+    private final List<Car> carList = new CarDaoImpl().createCarList();
     @GetMapping(value = "/cars")
     public String getSomeCars(ModelMap model, @RequestParam(value = "count", required = false) Integer count) {
-        List<Car> carList = carService.getCarList();
         model.addAttribute("carList", carService.getSomeCars(carList, count));
         return "cars";
     }
