@@ -19,12 +19,11 @@ import java.util.List;
 public class CarController {
 
     @Autowired
-    private final CarService carService = new CarServiceImpl();
-    private final List<Car> carList = new CarDaoImpl().createCarList();
+    private CarService carService;
 
     @GetMapping(value = "/cars")
     public String getSomeCars(ModelMap model, @RequestParam(value = "count", required = false) Integer count) {
-        model.addAttribute("carList", carService.getSomeCars(carList, count));
+        model.addAttribute("carList", carService.getSomeCars(new CarDaoImpl().createCarList(), count));
         return "cars";
     }
 }
