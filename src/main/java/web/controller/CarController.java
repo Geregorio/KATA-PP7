@@ -23,7 +23,7 @@ public class CarController {
 
     @GetMapping(value = "/cars")
     public String getSomeCars(ModelMap model, @RequestParam(value = "count", required = false) Integer count) {
-        model.addAttribute("carList", carService.getSomeCars(new CarDaoImpl().createCarList(), count));
+        model.addAttribute("carList", carService.getSomeCars(count));
         return "cars";
     }
 }

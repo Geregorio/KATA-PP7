@@ -8,7 +8,7 @@ import java.util.List;
 @Repository
 public class CarDaoImpl implements CarDao {
 
-    private List<Car> carList = new ArrayList<>();
+    private final List<Car> carList = new ArrayList<>();
     @Override
     public List<Car> createCarList() {
         carList.add(new Car("BMW", "M5", 2018));
@@ -17,5 +17,10 @@ public class CarDaoImpl implements CarDao {
         carList.add(new Car("Bentley", "Continental", 2022));
         carList.add(new Car("Skoda", "Octavia", 2024));
         return carList;
+    }
+
+    @Override
+    public void clearCarList() {
+        carList.clear();
     }
 }
