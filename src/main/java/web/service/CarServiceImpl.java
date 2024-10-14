@@ -13,13 +13,18 @@ import java.util.List;
 @Service
 public class CarServiceImpl implements CarService {
 
-    private final CarDao carDao = new CarDaoImpl();
+    @Autowired
+    private CarDao carDao;
 
     @Override
     public List<Car> getSomeCars(Integer amount) {
-        carDao.clearCarList();
-        List<Car> carList = carDao.createCarList();
+        List<Car> carList = new ArrayList<>();
         List<Car> someCars = new ArrayList<>();
+        if (carDao.getCarList().isEmpty()) {
+            carList = carDao.createCarList();
+        } else {
+            carList = carDao.getCarList();
+        }
         if (amount == null) {
             return carList;
         } else if (amount < carList.size()) {

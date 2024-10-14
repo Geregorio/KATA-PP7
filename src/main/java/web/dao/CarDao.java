@@ -6,4 +6,5 @@ import java.util.List;
 public interface CarDao {
     List<Car> createCarList();
     void clearCarList();
+    List<Car> getCarList();
 }
